@@ -7,7 +7,7 @@
           <div :class="advanced ? null: 'fold'">
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="序列号"
+                label="订单号"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.serialNumber"/>
@@ -118,7 +118,7 @@ export default {
     }),
     columns () {
       return [{
-        title: '序列表',
+        title: '订单表',
         dataIndex: 'serialNumber'
       }, {
         title: '产品名称',
@@ -180,7 +180,7 @@ export default {
     },
     handleproductAddSuccess () {
       this.productAdd.visiable = false
-      this.$message.success('新增序列号成功')
+      this.$message.success('新增订单号成功')
       this.search()
     },
     edit (record) {
@@ -192,7 +192,7 @@ export default {
     },
     handleproductEditSuccess () {
       this.productEdit.visiable = false
-      this.$message.success('修改序列号成功')
+      this.$message.success('修改订单号成功')
       this.search()
     },
     handleDeptChange (value) {

@@ -86,12 +86,12 @@ public class RedisConfig extends CachingConfigurerSupport {
     @ConditionalOnMissingBean(name = "redisTemplate")
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
-        //使用 fastjson 序列化
+        //使用 fastjson 订单化
         JacksonRedisSerializer jacksonRedisSerializer = new JacksonRedisSerializer<>(Object.class);
-        // value 值的序列化采用 fastJsonRedisSerializer
+        // value 值的订单化采用 fastJsonRedisSerializer
         template.setValueSerializer(jacksonRedisSerializer);
         template.setHashValueSerializer(jacksonRedisSerializer);
-        // key 的序列化采用 StringRedisSerializer
+        // key 的订单化采用 StringRedisSerializer
         template.setKeySerializer(new StringRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
 

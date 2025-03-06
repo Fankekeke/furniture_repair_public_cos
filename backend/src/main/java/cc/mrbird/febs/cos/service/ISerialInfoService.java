@@ -14,10 +14,10 @@ import java.util.LinkedHashMap;
 public interface ISerialInfoService extends IService<SerialInfo> {
 
     /**
-     * 分页获取序列信息
+     * 分页获取订单信息
      *
      * @param page 分页对象
-     * @param serialInfo 序列信息
+     * @param serialInfo 订单信息
      * @return 结果
      */
     IPage<LinkedHashMap<String, Object>> selectSerialInfoPage(Page<SerialInfo> page, SerialInfo serialInfo);

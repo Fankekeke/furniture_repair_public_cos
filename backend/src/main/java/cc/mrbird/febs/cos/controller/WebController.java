@@ -98,10 +98,10 @@ public class WebController {
         UserInfo user = (UserInfo) session.getAttribute("user");
         orderInfo.setCustomerId(user.getId());
 
-        // 根据序列号获取产品信息
+        // 根据订单号获取产品信息
         SerialInfo serialInfo = serialInfoService.getOne(Wrappers.<SerialInfo>lambdaQuery().eq(SerialInfo::getSerialNumber, orderInfo.getSerialNumber()));
         if (serialInfo == null) {
-            return R.error("未找到此序列号");
+            return R.error("未找到此订单号");
         }
         orderInfo.setProductId(serialInfo.getProductId());
         orderInfo.setOrderCode("ORD-" + System.currentTimeMillis());

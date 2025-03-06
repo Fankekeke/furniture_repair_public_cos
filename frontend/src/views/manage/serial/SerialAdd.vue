@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="新增序列" @cancel="onClose" :width="800">
+  <a-modal v-model="show" title="新增订单" @cancel="onClose" :width="800">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -11,10 +11,10 @@
     <a-form :form="form" layout="vertical">
       <a-row :gutter="20">
         <a-col :span="12">
-          <a-form-item label='序列号' v-bind="formItemLayout">
+          <a-form-item label='订单号' v-bind="formItemLayout">
             <a-input v-decorator="[
             'serialNumber',
-            { rules: [{ required: true, message: '请输入序列号!' }] }
+            { rules: [{ required: true, message: '请输入订单号!' }] }
             ]"/>
           </a-form-item>
         </a-col>

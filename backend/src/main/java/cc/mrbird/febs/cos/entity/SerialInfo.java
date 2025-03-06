@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * 产品序列表
+ * 产品订单表
  *
  * @author FanK
  */
@@ -28,7 +28,7 @@ public class SerialInfo implements Serializable {
     private Integer id;
 
     /**
-     * 序列表
+     * 订单表
      */
     private String serialNumber;
 

@@ -71,21 +71,21 @@
       </a-col>
     </a-row>
     <a-row style="margin-top: 15px" v-if="user.roleId == 73">
-      <a-col :span="9">
+      <a-col :span="24">
         <a-card hoverable :bordered="false" style="width: 100%">
           <a-skeleton active v-if="loading" />
           <apexchart v-if="!loading" type="donut" height="270" :options="chartOptions2" :series="series2"></apexchart>
         </a-card>
       </a-col>
       <a-col :span="15">
-        <a-card hoverable :bordered="false" style="width: 100%">
-          <a-skeleton active v-if="loading" />
-          <apexchart v-if="!loading" type="scatter" height="300" :options="chartOptions3" :series="series3"></apexchart>
-        </a-card>
+<!--        <a-card hoverable :bordered="false" style="width: 100%">-->
+<!--          <a-skeleton active v-if="loading" />-->
+<!--          <apexchart v-if="!loading" type="scatter" height="300" :options="chartOptions3" :series="series3"></apexchart>-->
+<!--        </a-card>-->
       </a-col>
     </a-row>
     <a-row style="margin-top: 15px">
-      <a-col :span="12">
+      <a-col :span="24">
         <a-card hoverable :loading="loading" :bordered="false" title="公告信息" style="margin-top: 15px">
           <div style="padding: 0 22px">
             <a-list item-layout="vertical" :pagination="pagination" :data-source="bulletinList">

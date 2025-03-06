@@ -28,10 +28,10 @@ public class SerialInfoController {
     private final ISerialInfoService serialInfoService;
 
     /**
-     * 分页获取序列信息
+     * 分页获取订单信息
      *
      * @param page 分页对象
-     * @param serialInfo 序列信息
+     * @param serialInfo 订单信息
      * @return 结果
      */
     @GetMapping("/page")
@@ -50,49 +50,49 @@ public class SerialInfoController {
     }
 
     /**
-     * 新增序列信息
+     * 新增订单信息
      *
-     * @param serialInfo 序列信息
+     * @param serialInfo 订单信息
      * @return 结果
      */
     @PostMapping
     public R save(SerialInfo serialInfo) throws FebsException {
-        // 校验序列号是否重复
+        // 校验订单号是否重复
         if (StrUtil.isEmpty(serialInfo.getSerialNumber())) {
-            throw new FebsException("序列号不能为空！");
+            throw new FebsException("订单号不能为空！");
         }
         int count = serialInfoService.count(Wrappers.<SerialInfo>lambdaQuery().eq(SerialInfo::getSerialNumber, serialInfo.getSerialNumber()));
         if (count > 0) {
-            throw new FebsException("序列号不能重复！");
+            throw new FebsException("订单号不能重复！");
         }
         serialInfo.setCreateDate(DateUtil.formatDateTime(new Date()));
         return R.ok(serialInfoService.save(serialInfo));
     }
 
     /**
-     * 修改序列信息
+     * 修改订单信息
      *
-     * @param serialInfo 序列信息
+     * @param serialInfo 订单信息
      * @return 结果
      */
     @PutMapping
     public R edit(SerialInfo serialInfo) throws FebsException {
-        // 校验序列号是否重复
+        // 校验订单号是否重复
         if (StrUtil.isEmpty(serialInfo.getSerialNumber())) {
-            throw new FebsException("序列号不能为空！");
+            throw new FebsException("订单号不能为空！");
         }
         List<SerialInfo> serialInfoList = serialInfoService.list(Wrappers.<SerialInfo>lambdaQuery().eq(SerialInfo::getSerialNumber, serialInfo.getSerialNumber()));
         if (CollectionUtil.isNotEmpty(serialInfoList) && !(serialInfoList.size() == 1 && serialInfoList.get(0).getId().equals(serialInfo.getId()))) {
-            throw new FebsException("序列号不能重复！");
+            throw new FebsException("订单号不能重复！");
         }
         return R.ok(serialInfoService.updateById(serialInfo));
     }
 
     /**
-     * 删除序列信息
+     * 删除订单信息
      *
      * @param ids ids
-     * @return 序列信息
+     * @return 订单信息
      */
     @DeleteMapping("/{ids}")
     public R deleteByIds(@PathVariable("ids") List<Integer> ids) {
