@@ -152,10 +152,6 @@ export default {
             return '- -'
           }
         }
-      }, {
-        title: '操作',
-        dataIndex: 'operation',
-        scopedSlots: {customRender: 'operation'}
       }]
     }
   },
@@ -164,7 +160,7 @@ export default {
   },
   methods: {
     editStatus (row, status) {
-      this.$post('/cos/user-info/account/status', { staffId: row.id, status }).then((r) => {
+      this.$post('/cos/user-info/account/status', { userId: row.id, status }).then((r) => {
         this.$message.success('修改成功')
         this.fetch()
       })

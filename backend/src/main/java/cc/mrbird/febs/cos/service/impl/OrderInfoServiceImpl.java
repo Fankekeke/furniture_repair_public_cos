@@ -198,7 +198,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean orderDistribute(String orderName, String orderCode, Integer staffId, String date, BigDecimal amount, String remark) {
+    public boolean orderDistribute(String orderName, String orderCode, Integer staffId, String date, BigDecimal amount, String remark, Integer serverType) {
         // 获取工单信息
         OrderInfo orderInfo = this.getOne(Wrappers.<OrderInfo>lambdaQuery().eq(OrderInfo::getOrderCode, orderCode));
         // 添加预约记录
@@ -211,6 +211,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
         reserveInfo.setCreateDate(DateUtil.formatDateTime(new Date()));
         reserveInfo.setOpenFlag(0);
         reserveInfo.setOrderCode(orderCode);
+        orderInfo.setServerType(serverType);
         reserveInfoService.save(reserveInfo);
         // 添加维修记录
         RepairInfo repairInfo = new RepairInfo();

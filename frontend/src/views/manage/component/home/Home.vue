@@ -211,7 +211,7 @@ export default {
           type: 'donut',
           height: 300
         },
-        labels: ['整租', '合租'],
+        labels: [],
         title: {
           text: '工单服务类型统计',
           align: 'left'

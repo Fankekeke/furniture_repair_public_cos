@@ -80,6 +80,9 @@ public class RepairInfoController {
         if (status == 1) {
             orderInfoService.update(Wrappers.<OrderInfo>lambdaUpdate().set(OrderInfo::getStatus, 2).eq(OrderInfo::getOrderCode, orderInfo.getOrderCode()));
         }
+        if (status == 4) {
+            orderInfoService.update(Wrappers.<OrderInfo>lambdaUpdate().set(OrderInfo::getStatus, 7).eq(OrderInfo::getOrderCode, orderInfo.getOrderCode()));
+        }
         return R.ok(repairInfoService.update(Wrappers.<RepairInfo>lambdaUpdate().set(RepairInfo::getRepairStatus, status).eq(RepairInfo::getId, repairId)));
     }
 

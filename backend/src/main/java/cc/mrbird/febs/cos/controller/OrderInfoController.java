@@ -74,8 +74,8 @@ public class OrderInfoController {
      * @return 结果
      */
     @GetMapping("/distribute")
-    public R orderDistribute(@RequestParam("orderName") String orderName, @RequestParam("orderCode") String orderCode, @RequestParam("staffId") Integer staffId, @RequestParam("date") String date, @RequestParam("money") BigDecimal amount, @RequestParam("remark") String remark) {
-        return R.ok(orderInfoService.orderDistribute(orderName, orderCode, staffId, date, amount, remark));
+    public R orderDistribute(@RequestParam("orderName") String orderName, @RequestParam("orderCode") String orderCode, @RequestParam("staffId") Integer staffId, @RequestParam("date") String date, @RequestParam("money") BigDecimal amount, @RequestParam("remark") String remark, @RequestParam(value = "serverType", required = false) Integer serverType) {
+        return R.ok(orderInfoService.orderDistribute(orderName, orderCode, staffId, date, amount, remark, serverType));
     }
 
     /**

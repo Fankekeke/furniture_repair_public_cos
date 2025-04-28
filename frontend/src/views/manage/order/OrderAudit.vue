@@ -94,6 +94,13 @@
             <a-date-picker :default-value="moment(new Date(), 'YYYY-MM-DD')" @change="onDateChange" style="width: 100%"/>
           </a-form-item>
         </a-col>
+        <a-col :span="12">
+          <a-form-item label='服务类型' v-bind="formItemLayout">
+            <a-select v-model="auditData.serverType" style="width: 100%;">
+              <a-select-option v-for="(item, index) in serviceSortList" :value="item.id" :key="index">{{ item.name }}</a-select-option>
+            </a-select>
+          </a-form-item>
+        </a-col>
         <a-col :span="24">
           <a-form-item label='维修备注' v-bind="formItemLayout">
             <a-textarea :rows="6" v-model="auditData.remark"/>
@@ -167,11 +174,20 @@ export default {
         reserveDate: '',
         remark: ''
       },
-      staffList: []
+      staffList: [],
+      serviceSortList: []
     }
+  },
+  mounted () {
+    this.getServiceSort()
   },
   methods: {
     moment,
+    getServiceSort () {
+      this.$get(`/cos/service-sort/list`).then((r) => {
+        this.serviceSortList = r.data.data
+      })
+    },
     selectStaffByProduct (productId) {
       this.$get(`/cos/staff-info/work/${productId}`).then((r) => {
         this.staffList = r.data.data
@@ -225,7 +241,8 @@ export default {
         'staffId': this.auditData.staffId,
         'date': this.auditData.reserveDate,
         'money': this.auditData.price,
-        'remark': this.auditData.remark
+        'remark': this.auditData.remark,
+        'serverType': this.auditData.serverType
       }).then((r) => {
         this.cleanData()
         this.$emit('success')

@@ -56,7 +56,7 @@ public interface IOrderInfoService extends IService<OrderInfo> {
      * @param remark  备注
      * @return 结果
      */
-    boolean orderDistribute(String orderName, String orderCode, Integer staffId, String date, BigDecimal amount, String remark);
+    boolean orderDistribute(String orderName, String orderCode, Integer staffId, String date, BigDecimal amount, String remark, Integer serverType);
 
     /**
      * 根据维修编号获取工单信息
