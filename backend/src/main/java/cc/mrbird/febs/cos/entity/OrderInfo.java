@@ -88,6 +88,11 @@ public class OrderInfo implements Serializable {
      */
     private String createDate;
 
+    /**
+     * 维修地址
+     */
+    private String address;
+
     @TableField(exist = false)
     private String userName;
 

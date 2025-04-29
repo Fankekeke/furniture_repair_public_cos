@@ -14,6 +14,7 @@
         oi.remark,
         oi.images,
         oi.status,
+        oi.address,
         oi.customer_id,
         oi.product_id,
         oi.staff_id,

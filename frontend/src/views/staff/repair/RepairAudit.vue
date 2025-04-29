@@ -60,6 +60,9 @@
         <a-col :span="8"><b>联系方式：</b>
           {{ orderInfo.phone }}
         </a-col>
+        <a-col :span="8"><b>维修地址：</b>
+          {{ orderInfo.address }}
+        </a-col>
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;" v-if="orderInfo != null">

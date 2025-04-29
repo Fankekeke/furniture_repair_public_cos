@@ -453,6 +453,10 @@
                     <input style="width: 95%" type="text" name="serialNumber" id="u-serialNumber" placeholder="订单号">
                 </div>
                 <div class="field">
+                    <label>维修地址</label>
+                    <input style="width: 95%" type="text" name="address" id="u-address" placeholder="维修地址">
+                </div>
+                <div class="field">
                     <label>备注</label>
                     <input style="width: 95%" type="text" name="content" id="u-content" placeholder="备注">
                 </div>
@@ -812,7 +816,7 @@
         $.ajax({
             url:"/web/order",
             type: "POST",
-            data: {serialNumber: $('#u-serialNumber').val(), remark: $('#u-content').val(), images: selectFileName},
+            data: {serialNumber: $('#u-serialNumber').val(), address: $('#u-address').val(), remark: $('#u-content').val(), images: selectFileName},
             dataType: "json",
             // contentType: "application/json;charset=UTF-8",
             success: function(response){
