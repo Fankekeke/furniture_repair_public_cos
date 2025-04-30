@@ -33,6 +33,9 @@
         <if test="staffEvaluation.orderName != null and staffEvaluation.orderName != ''">
             AND oi.`order_name` LIKE CONCAT('%',#{staffEvaluation.orderName},'%')
         </if>
+        <if test="staffEvaluation.staffId != null and staffEvaluation.staffId != ''">
+            AND si.`user_id` = #{staffEvaluation.staffId}
+        </if>
         ORDER BY
         se.create_date
     </select>
